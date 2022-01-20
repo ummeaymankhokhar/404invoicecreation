@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Convert or Export HTML Table to PDF file using jQuery | Tutorialswebsite</title>
+     <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        table
+        {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        table th
+        {
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+        table th, table td
+        {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+
+     <table id="tblCustomers" cellspacing="0" cellpadding="0">
+        <tr>
+            <th>Invoice No.</th>
+            <th>Name of the Customer</th>
+            <th>Departure Airport</th>
+            <th>Destination Airport</th>
+            <th>Invoice date</th>
+            <th>Total Value of the Invoice</th>
+            <th>Total Taxable Value</th>
+            <th>Total Taxes Value</th>
+            <th>Total Non Taxable Value</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>blank</td>
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>blank</td>
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>blank</td>
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>1</td>
+            <td>John </td>
+            <td>jhon@gmail.com</td>
+            <td>0445607456</td>
+            <td>blank</td>
+            
+        </tr>
+    </table>
+    <br />
+    <input type="button" id="btnExport" value="Export" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript">
+        $("body").on("click", "#btnExport", function () {
+            html2canvas($('#tblCustomers')[0], {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("cutomer-details.pdf");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
